@@ -1,0 +1,32 @@
+def Check_Plindrome(letters):
+
+    if letters is None:
+        return False
+    n = len(letters)
+    for i in range(n//2):
+        if letters[i] != letters[n - 1 -i]:
+            return False
+        return True
+
+def Plindrome_Possibilty(letters):
+
+    split_letters = [i for i in letters]
+
+    for i in range(len(split_letters)-1):
+        if split_letters[i] == '?' and split_letters[i+1] != '?':
+            split_letters[i] = split_letters[i + 1]
+
+        elif split_letters[i] == '?' and split_letters[i+1] == '?':
+            split_letters[i] = split_letters[i - 1]
+
+    if split_letters[-1] == '?':
+        split_letters[-1] = split_letters[-2]
+    print(split_letters)
+    if Check_Plindrome(split_letters):
+        return ("YES")
+    else:
+        return ("NO")
+
+
+
+
